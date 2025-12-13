@@ -157,14 +157,14 @@ function quantosRolosDePapelEmVolta(indiceLinha, indiceRolo, inputs) {
     
     for(let i = -1; i <= 1; i++) {
         for(let j = -1; j <= 1; j++) {
-            const posicaoValida = !(i === 0 && j === 0)
+            const posicaoPesquisaEDiferentePosicaoRoloAtual = !(i === 0 && j === 0);
+            const inputExiste = inputs[indiceLinha + i] !== undefined && inputs[indiceLinha + i][indiceRolo + j] !== undefined;
 
-            if(posicaoValida && inputs[indiceLinha + i] !== undefined && inputs[indiceLinha + i][indiceRolo + j] !== undefined && inputs[indiceLinha + i][indiceRolo + j] === roloDePapel) {
+            if(posicaoPesquisaEDiferentePosicaoRoloAtual && inputExiste && inputs[indiceLinha + i][indiceRolo + j] === roloDePapel) {
                 rolosEmVolta++;
             }
         }
     }
 
-    console.log(indiceLinha, indiceRolo, rolosEmVolta);
     return rolosEmVolta;
 }
